@@ -9,9 +9,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const customerName = document.getElementById("customer-name");
     const tableNumber = document.getElementById("table-number");
     const printBtn = document.querySelector(".print-btn");
-
+    const newBtn = document.querySelector(".new-bill");
+    let Gst = 0;
     let grandTotal = 0;
-
+    let totalitem = 0;
+    newBtn.addEventListener("click" ,function(){
+        location.reload();
+    })
     // Function to add an item to the table
     addItemBtn.addEventListener("click", function () {
         const description = itemDescription.value.trim();
@@ -22,10 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Please fill in all fields correctly.");
             return;
         }
-
+        totalitem++;
         const total = quantity * price;
         grandTotal += total;
-
+        gst = 0.025*grandTotal;
         const newRow = document.createElement("tr");
         newRow.innerHTML = `
             <tr id="itemRow$">
@@ -120,37 +124,58 @@ document.addEventListener("DOMContentLoaded", function () {
                 total,
             });
         });
-        username = "Shree Nidhi"
-        address = "45, Gandhi Nagar Kolkata, West Bengal 700032 India"
+        username = "Hotel Name"
+        const address = {
+            street : "J K Chambers First Floor, 77/83, Nagdevi Street",
+            city : "Thane",
+            state : "Maharashtra",
+            zipcode : "400003",
+            phoneno : "09833620541"
+        }
+        
         GSTIN = "AB54XXXXXXXXXXX"
         FssaiNo = "XXXXXX0000X0XX"
         // Create a printable bill HTML
         const printableBill = `
             <style>
+                *{margin:0; padding : 0px;}
                 body { font-family: Arial, sans-serif; color: black; }
-                h1, h3 , h4 { text-align: center;  }
-                table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-                th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+                h1, h2,p{ text-align: center;}
+                table { width: 100%; border-collapse: collapse; text-align: center;}
+                th, td, tbody , tfoot ,thead {text-align:center; border: none; }
                 th { background-color: #4a90e2; color: black; }
-                .total-label { font-weight: bold; }
+                .total-label { text-align: center;padding : 10px }
+                .no-wrap { white-space: nowrap; }
+                span{padding : 10px;}
             </style>
-            <h1>${username}<h1>
-            <h3>${address}</h3>
-            <h3>${GSTIN}</h3>
-            <h4>${FssaiNo}</h4>
-            <p><strong>Customer Name:</strong> ${customerName}</p>
-            <p><strong>Table Number:</strong> ${tableNumber}</p>
-            <p><strong>Date:</strong> ${date}</p>
-            <p><strong>Time:</strong> ${time}</p>
+            <p>---------------------------------------------------------------------------------------</p>
+            <h2>${username}</h2>
+            <p>GSTIN : ${GSTIN}</p>
+            <p>FSSAI No : ${FssaiNo}</p>
+            <p>---------------------------------------------------------------------------------------</p>
+            <p>${address.street} <br>
+            ${address.city}, ${address.state} ${address.zipcode} <br>
+            Phone: ${address.phoneno}
+            </p>
+            <p>---------------------------------------------------------------------------------------</p>
+            <p>TAX INVOICE</p>
+            <span>Bill No : </span><br>
+            <span> Bill Date : ${date} </span><br>
+            <span>Table Number: ${tableNumber}</span>
+            <span>Time: ${time}</p>
+            <p>---------------------------------------------------------------------------------------</p>
             <table>
-                <thead>
+                <tbody>
                     <tr>
-                        <th>Description</th>
-                        <th>Quantity</th>
-                        <th>Unit Price</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
+                        <td style="width:30%">Description</td>
+                        <td style="width:20%">Quantity</td>
+                        <td style="width:20%">Unit Price</td>
+                        <td style="width:20%">Total</td>
+                    </tr> 
+                </tbody>
+            </table>
+            <p>---------------------------------------------------------------------------------------</p>
+            <table>
                 <tbody>
                     ${items.map(item => `
                         <tr>
@@ -161,13 +186,33 @@ document.addEventListener("DOMContentLoaded", function () {
                         </tr>
                     `).join("")}
                 </tbody>
+            </table>
+            <p>---------------------------------------------------------------------------------------</p>
+            <table>
                 <tfoot>
                     <tr>
-                        <td colspan="3" class="total-label">Grand Total</td>
-                        <td>${grandTotalCell.textContent}</td>
+                        <td colspan="3" class="total-label">Items : ${totalitem}</td>
+                        <td colspan="3" class="total-label">Total : ${grandTotalCell.textContent}</td>
                     </tr>
                 </tfoot>
             </table>
+            <p>==================================================</p>
+            <p><----------------------------GST Breakup Details----------------------------> </p>
+            <table>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="total-label">CGST : ${gst.toFixed(2)}</td>
+                        <td colspan="3" class="total-label">SGST : ${gst.toFixed(2)}</td>
+                        <td colspan="3" class="total-label">IGST : ${(0).toFixed(2)}</td>
+                        <td colspan="3" class="total-label">Grand Total : ${(grandTotal+gst+gst).toFixed(2)}</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <p><------------------------Amount Recd From Customer--------------------> </p>
+            <p>---------------------------------------------------------------------------------------</p>
+            <p>Cash : </p>
+            <p>Balance Paid in Cash : </p>
+            <p>==================================================</p>
         `;
 
         // Open a new window with the printable bill
@@ -188,3 +233,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('date').value = formattedDate;
         document.getElementById('time').value = formattedTime;
     }
+
+
+    

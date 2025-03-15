@@ -11,6 +11,9 @@
     --menu-bg-dark: rgba(16, 16, 16, 0.98);
     --menu-bg-light: rgba(245, 245, 245, 0.98);
 }
+.light-theme .form-group label{
+    color:black;
+}
 .bill-container {
     max-width: 800px;
     margin: 20px auto;

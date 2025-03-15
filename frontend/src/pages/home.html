@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../styles/default.css">
     <link rel="stylesheet" href="../styles/home.css">
     <script src="../components/node_modules/chart.js/dist/chart.umd.js"></script>
-    <title>Restrostat</title>
+    <title>Restrostat Home Page</title>
 </head>
 <body class="dark-theme">
     <div class="container">
@@ -53,26 +53,20 @@
             <li class="has-submenu">
                 <a href="#inventory">Menu</a>
                 <ul class="submenu">
-                    <li><a href="./view_menu.html">View Menu</a></li>
+                    <li><a href="./viewmenu.html">View Menu</a></li>
                     <li><a href="./update_menu.html">Update Menu</a></li>
                 </ul>
             </li>
             <li class="has-submenu">
-                <a href="#reports">Reports & Analytics</a>
+                <a href="../pages/reports.html">Reports & Analytics</a>
             </li>
-            <li class="has-submenu">
+            <!-- <li class="has-submenu">
                 <a href="#staff-manage">Staff Management</a>
-            </li>
+            </li> -->
         </ul>
     </nav>
 
     <div class="charts-container">
-        <div class="chart-container">
-            <canvas id="sales-bar"></canvas>
-        </div>
-        <div class="chart-container">
-            <canvas id="sales-line"></canvas>
-        </div>
         <div class="chart-container">
             <canvas id="sales-pie"></canvas>
         </div>
@@ -113,9 +107,20 @@
         </table>
     </div>
     
-    <script>
-        
-    </script>
+
+        <script>
+// Add hover effects dynamically
+document.querySelectorAll('.stat-card, .chart-container').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+    });
+});
+</script>
+
     
     <script src="../utils/changetheme.js"></script>
     <script src="../utils/hovermenu.js"></script>
