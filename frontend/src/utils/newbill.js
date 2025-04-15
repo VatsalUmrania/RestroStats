@@ -146,24 +146,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 th { background-color: #4a90e2; color: black; }
                 .total-label { text-align: center;padding : 10px }
                 .no-wrap { white-space: nowrap; }
-                span{padding : 10px;}
+                span{text-align: center;}
+                .horizontal_line {width: 100%;height:5px;margin:10px;  border-top: 2px dashed black;line-height: 80%;}
             </style>
-            <p>---------------------------------------------------------------------------------------</p>
+            <div class="horizontal_line"></div>
             <h2>${username}</h2>
             <p>GSTIN : ${GSTIN}</p>
             <p>FSSAI No : ${FssaiNo}</p>
-            <p>---------------------------------------------------------------------------------------</p>
+            <div class="horizontal_line"></div>
             <p>${address.street} <br>
             ${address.city}, ${address.state} ${address.zipcode} <br>
             Phone: ${address.phoneno}
             </p>
-            <p>---------------------------------------------------------------------------------------</p>
+            <div class="horizontal_line"></div>
             <p>TAX INVOICE</p>
-            <span>Bill No : </span><br>
+            <span>Bill No : 1001</span><br>
             <span> Bill Date : ${date} </span><br>
             <span>Table Number: ${tableNumber}</span>
             <span>Time: ${time}</p>
-            <p>---------------------------------------------------------------------------------------</p>
+            <div class="horizontal_line"></div>
             <table>
                 <tbody>
                     <tr>
@@ -174,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </tr> 
                 </tbody>
             </table>
-            <p>---------------------------------------------------------------------------------------</p>
+            <div class="horizontal_line"></div>
             <table>
                 <tbody>
                     ${items.map(item => `
@@ -187,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     `).join("")}
                 </tbody>
             </table>
-            <p>---------------------------------------------------------------------------------------</p>
+            <div class="horizontal_line"></div>
             <table>
                 <tfoot>
                     <tr>
@@ -196,8 +197,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     </tr>
                 </tfoot>
             </table>
-            <p>==================================================</p>
-            <p><----------------------------GST Breakup Details----------------------------> </p>
+            <div class="horizontal_line"></div>
+            <div class="horizontal_line"></div>
+            <span>GST Breakup Details<span>
+            <div class="horizontal_line"></div>
             <table>
                 <tfoot>
                     <tr>
@@ -212,7 +215,8 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>---------------------------------------------------------------------------------------</p>
             <p>Cash : </p>
             <p>Balance Paid in Cash : </p>
-            <p>==================================================</p>
+            <div class="horizontal_line"></div>
+            <div class="horizontal_line"></div>
         `;
 
         // Open a new window with the printable bill

@@ -9,13 +9,12 @@
     <link rel="stylesheet" href="../styles/default.css">
     <title>Restrostat - Login</title>
 </head>
-<body class="dark-theme">
+<body class="light-theme">
     
     <div class="auth-container">
         <div class="login-card">
-            <img id="logo" src="/frontend/src/assets/logo_dark.jpg" alt="Restrostat Logo" id="logo">       
-
-            
+            <img id="logo" src="../assets/logo_light_2.jpg" alt="Restrostat Logo" id="logo">       
+           
             <form id="loginForm" class="auth-form">
                 <div class="input-group">
                     <label for="email">Email</label>
@@ -59,6 +58,30 @@
     </div>
 
     <!-- <script src="../utils/auth.js"></script> -->
-    <script src="../utils/changetheme.js"></script>
+   <script>
+    const body = document.body;
+        const logo = document.getElementById('logo');
+        const themeBtn = document.getElementById('theme-btn');
+        const modeIcon = document.getElementById('mode-icon');
+
+        // Load saved theme from localStorage or default to light-theme
+        const savedTheme = localStorage.getItem('theme') || 'light-theme';
+        applyTheme(savedTheme);  // Apply the saved or default theme
+
+        // Function to apply the theme
+        function applyTheme(theme) {
+            body.className = theme;  // Apply theme class to body
+            logo.src = theme === 'dark-theme' ? '../assets/logo_dark_2.jpg' : '../assets/logo_light_2.jpg';
+            modeIcon.textContent = theme === 'dark-theme' ? 'light_mode' : 'dark_mode';
+        }
+
+        // Toggle Theme Button Click Event
+        themeBtn.addEventListener('click', () => {
+            // Toggle between light and dark theme
+            const newTheme = body.classList.contains('dark-theme') ? 'light-theme' : 'dark-theme';
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);  // Save the new theme
+        });
+   </script>
 </body>
 </html>

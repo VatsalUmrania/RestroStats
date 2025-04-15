@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Update logo
         if(logo) {
-            logo.src = `../assets/logo_${newTheme === 'dark-theme' ? 'dark' : 'light'}.jpg`;
+            logo.src = `../assets/logo_${newTheme === 'dark-theme' ? 'dark_1' : 'light_2'}.jpg`;
         }
         
         // Update theme icon
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Set initial logo and icon
     if(logo) {
-        logo.src = `../assets/logo_${savedTheme === 'dark-theme' ? 'dark' : 'light'}.jpg`;
+        logo.src = `../assets/logo_${savedTheme === 'dark-theme' ? 'light_2' : 'dark_1'}.jpg`;
     }
     if(modeIcon) {
         modeIcon.textContent = savedTheme === 'dark-theme' ? 'light_mode' : 'dark_mode';

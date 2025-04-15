@@ -67,90 +67,84 @@
     </nav>
 
     <main class="updatemenu-container">
-        <h1>Update Menu</h1>
+        <h1 class="page-title">Update Menu</h1>
 
         <!-- Add New Item Form -->
-        <div class="add-item-form">
-            <h2>Add New Item</h2>
-            <form id="add-item-form">
+        <div class="add-item-form card">
+            <h2 class="form-title">Add New Menu Item</h2>
+            <form id="add-item-form" class="grid-form">
                 <div class="form-group">
-                    <label for="new-item-name">Name</label>
-                    <input type="text" id="new-item-name" placeholder="Enter item name" required>
+                    <label for="new-item-name">Item Name</label>
+                    <input type="text" id="new-item-name" class="modern-input" 
+                           placeholder="Enter item name" required>
                 </div>
                 <div class="form-group">
                     <label for="new-item-category">Category</label>
-                    <select id="new-item-category" required>
-                        <option value="Food">Food</option>
-                        <option value="Beverage">Beverage</option>
-                    </select>
+                    <div class="select-wrapper">
+                        <select id="new-item-category" class="modern-select" required>
+                            <option value="Food">Food</option>
+                            <option value="Beverage">Beverage</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="new-item-price">Price</label>
-                    <input type="number" id="new-item-price" placeholder="Enter price" step="0.01" required>
+                    <div class="price-input">
+                        <span class="currency">₹</span>
+                        <input type="number" id="new-item-price" class="modern-input" 
+                               placeholder="0.00" step="0.01" required>
+                    </div>
                 </div>
-                <button type="submit" class="submit-btn">Add Item</button>
+                <button type="submit" class="submit-btn primary-action">
+                    <span class="material-symbols-outlined">add</span>
+                    Add Item
+                </button>
             </form>
         </div>
 
         <!-- Menu Table -->
-        <table id="menu-table">
-            <thead>
-                <tr>
-                    <th>Item ID</th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Example Menu Items -->
-                <tr>
-                    <td>001</td>
-                    <td><input type="text" value="Burger" class="editable-input"></td>
-                    <td>Food</td>
-                    <td><input type="number" value="10.00" step="0.01" class="editable-input"></td>
-                    <td>
-                        <button class="action-btn save-btn" title="Save Changes">
-                            <span class="material-symbols-outlined">save</span>
-                        </button>
-                        <button class="action-btn delete-btn" title="Delete Item">
-                            <span class="material-symbols-outlined">delete</span>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>002</td>
-                    <td><input type="text" value="Pizza" class="editable-input"></td>
-                    <td>Food</td>
-                    <td><input type="number" value="15.00" step="0.01" class="editable-input"></td>
-                    <td>
-                        <button class="action-btn save-btn" title="Save Changes">
-                            <span class="material-symbols-outlined">save</span>
-                        </button>
-                        <button class="action-btn delete-btn" title="Delete Item">
-                            <span class="material-symbols-outlined">delete</span>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>003</td>
-                    <td><input type="text" value="Coffee" class="editable-input"></td>
-                    <td>Beverage</td>
-                    <td><input type="number" value="5.00" step="0.01" class="editable-input"></td>
-                    <td>
-                        <button class="action-btn save-btn" title="Save Changes">
-                            <span class="material-symbols-outlined">save</span>
-                        </button>
-                        <button class="action-btn delete-btn" title="Delete Item">
-                            <span class="material-symbols-outlined">delete</span>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-container card">
+            <table id="menu-table" class="modern-table">
+                <thead>
+                    <tr>
+                        <th>Item ID</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example Rows (same structure) -->
+                    <tr>
+                        <td>001</td>
+                        <td><input type="text" value="Burger" class="editable-input"></td>
+                        <td>
+                            <div class="category-pill Food">Food</div>
+                        </td>
+                        <td>
+                            <div class="price-input">
+                                <span class="currency">₹</span>
+                                <input type="number" value="10.00" step="0.01" 
+                                       class="editable-input price-field">
+                            </div>
+                        </td>
+                        <td class="actions-cell">
+                            <div class="action-buttons">
+                                <button class="action-btn save-btn" title="Save Changes">
+                                    <span class="material-symbols-outlined">save</span>
+                                </button>
+                                <button class="action-btn delete-btn" title="Delete Item">
+                                    <span class="material-symbols-outlined">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- More rows... -->
+                </tbody>
+            </table>
+        </div>
     </main>
-
     <script src="../utils/changetheme.js"></script>
     <script src="../utils/hovermenu.js"></script>
     <script src="../utils/update_menu.js"></script> <!-- JavaScript for update menu functionality -->

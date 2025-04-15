@@ -1,36 +1,39 @@
-<html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpg" href="../assets/LOGO 1 1024.jpg">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0">
     <link rel="stylesheet" href="../styles/default.css">
-    <link rel="stylesheet" href="../styles/home.css">
+    <link rel="stylesheet" href="../styles/home1.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="../components/node_modules/chart.js/dist/chart.umd.js"></script>
     <title>Restrostat Home Page</title>
 </head>
-<body class="dark-theme">
+<body class="light-theme">
     <div class="container">
-        <a href="./home.html"><img id="logo" src="../assets/LOGO 1 1024 dark.jpg" alt="Restrostat Logo"></a>
+        <a href="./home.html"><img id="logo" src="../assets/logo_light_2.png" alt="Restrostat Logo"></a>
         <div class="header-controls">
             <button id="theme-btn" aria-label="Toggle theme">
                 <span class="material-symbols-outlined" id="mode-icon">light_mode</span>
             </button>
             <div class="account">
-                <button id="user-btn" aria-label="User account" onclick="toggleAccountDropdown()">
+                <button id="user-btn" aria-label="User account">
                     <span class="material-symbols-outlined">account_circle</span>
-                    <div class="account-dropdown" id="accountDropdown">
-                        <a href="#account-info">
-                            <span class="material-symbols-outlined acc-info">info</span>
-                            Account Info
-                        </a>
-                        <a href="#logout">
-                            <span class="material-symbols-outlined logout">logout</span>
-                            Logout
-                        </a>
-                    </div>
+                    <span class="notification-dot"></span>
                 </button>
+                <div class="account-dropdown" id="accountDropdown">
+                    <a href="#account-info">
+                        <span class="material-symbols-outlined">info</span>
+                        Account Info
+                    </a>
+                    <a href="#logout">
+                        <span class="material-symbols-outlined">logout</span>
+                        Logout
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -40,7 +43,7 @@
     </button>
 
     <nav class="vertical-menu" id="main-menu">
-        <img id="menu-logo" src="../assets/LOGO 1 1024 menu-dark.jpg" alt="Menu Logo">
+        <img id="menu-logo" src="../assets/logo_light_2.png" alt="Menu Logo">
         <ul>
             <li class="has-submenu">
                 <a href="#bill-system">Bill System</a>
@@ -57,73 +60,121 @@
                     <li><a href="./update_menu.html">Update Menu</a></li>
                 </ul>
             </li>
-            <li class="has-submenu">
+            <li>
                 <a href="../pages/reports.html">Reports & Analytics</a>
             </li>
-            <!-- <li class="has-submenu">
-                <a href="#staff-manage">Staff Management</a>
-            </li> -->
         </ul>
     </nav>
 
-    <div class="charts-container">
-        <div class="chart-container">
-            <canvas id="sales-pie"></canvas>
+    <main>
+        <div class="dashboard-grid">
+            <div class="dashboard-card" id="card1">
+                <div class="card-title">
+                    <h3>Today's Revenue</h3>
+                    <div class="card-icon">
+                        <span class="material-symbols-outlined">payments</span>
+                    </div>
+                </div>
+                <div class="stat-value">₹1,458.50</div>
+                <div class="stat-label">35 transactions</div>
+                <div class="stat-change positive">
+                    <span class="material-symbols-outlined">trending_up</span>
+                    <span>12.5% vs yesterday</span>
+                </div>
+            </div>
+            
+            <div class="dashboard-card" id="card2">
+                <div class="card-title">
+                    <h3>Weekly Sales</h3>
+                    <div class="card-icon">
+                        <span class="material-symbols-outlined">calendar_month</span>
+                    </div>
+                </div>
+                <div class="stat-value">₹8,245.75</div>
+                <div class="stat-label">Total for this week</div>
+                <div class="stat-change negative">
+                    <span class="material-symbols-outlined">trending_down</span>
+                    <span>8.3% vs last week</span>
+                </div>
+            </div>
+            
+            <div class="dashboard-card" id="card3">
+                <div class="card-title">
+                    <h3>Popular Items</h3>
+                    <div class="card-icon">
+                        <span class="material-symbols-outlined">restaurant_menu</span>
+                    </div>
+                </div>
+                <div class="stat-value">4</div>
+                <div class="stat-label">Top sellers this week</div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="popular-items-progress"></div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="tracking-history">
-        <h2>Transaction History</h2>
-        <table style="width: 100%;">
-            <tr>
-                <th style="width: 20%;">Date</th>
-                <th style="width: 20%;">Bill No.</th>
-                <th>Amount</th>
-            </tr>
-            <tr>
-                <td>2024-03-01</td>
-                <td>INV-1001</td>
-                <td>$125.50</td>
-            </tr>
-            <tr>
-                <td>2024-03-02</td>
-                <td>INV-1002</td>
-                <td>$78.90</td>
-            </tr>
-            <tr>
-                <td>2024-03-03</td>
-                <td>INV-1003</td>
-                <td>$205.75</td>
-            </tr>
-            <tr>
-                <td>2024-03-04</td>
-                <td>INV-1004</td>
-                <td>$89.20</td>
-            </tr>
-            <tr>
-                <td>2024-03-05</td>
-                <td>INV-1005</td>
-                <td>$150.00</td>
-            </tr>
-        </table>
-    </div>
-    
 
-        <script>
-// Add hover effects dynamically
-document.querySelectorAll('.stat-card, .chart-container').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
-    });
-});
-</script>
+        <div class="chart-container" id="sales-chart-container">
+            <div class="card-title">
+                <h3>Sales Trend</h3>
+                <button class="action-btn">View Report</button>
+            </div>
+            <div style="width: 100%; height: 250px;">
+                <canvas id="sales-chart"></canvas>
+            </div>
+        </div>
 
-    
-    <script src="../utils/changetheme.js"></script>
-    <script src="../utils/hovermenu.js"></script>
-    <script src="../utils/chart.js"></script>
+        <div class="tracking-history" id="transaction-history">
+            <h2>Transaction History</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">Date</th>
+                        <th style="width: 20%;">Bill No.</th>
+                        <th style="width: 20%;">Amount</th>
+                        <th style="width: 20%;">Status</th>
+                        <th style="width: 20%;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="transaction-table-body">
+                    <tr>
+                        <td>2024-03-01</td>
+                        <td>INV-1001</td>
+                        <td>₹125.50</td>
+                        <td><span class="status paid">Paid</span></td>
+                        <td><button class="action-btn">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>2024-03-02</td>
+                        <td>INV-1002</td>
+                        <td>₹78.90</td>
+                        <td><span class="status paid">Paid</span></td>
+                        <td><button class="action-btn">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>2024-03-03</td>
+                        <td>INV-1003</td>
+                        <td>₹205.75</td>
+                        <td><span class="status pending">Pending</span></td>
+                        <td><button class="action-btn">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>2024-03-04</td>
+                        <td>INV-1004</td>
+                        <td>₹89.20</td>
+                        <td><span class="status paid">Paid</span></td>
+                        <td><button class="action-btn">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>2024-03-05</td>
+                        <td>INV-1005</td>
+                        <td>₹150.00</td>
+                        <td><span class="status pending">Pending</span></td>
+                        <td><button class="action-btn">View</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="../utils/home1.js"></script>
 </body>
 </html>

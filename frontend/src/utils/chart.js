@@ -50,7 +50,7 @@
 //     }
 // });
 
-const ctx3 = document.getElementById('sales-pie');
+const ctx3 = document.getElementById('sales-chart');
         const myChart3 = new Chart(ctx3, {
         type: 'pie',
         data: {

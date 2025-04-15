@@ -1,172 +1,184 @@
-/* updatemenu.css */
-body.dark-theme {
-    background-color: var(--dark-bg);
-    color: var(--text-light);
-}
-
-.light-theme {
-    background-color: var(--light-bg);
-    color: var(--text-dark);
-}
-
+/* Update Menu Specific Styles */
 .updatemenu-container {
     max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: var(--dark-bg);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
+    margin: 2rem auto;
+    padding: 0 1.5rem;
 }
 
-.light-theme .updatemenu-container {
-    background-color: var(--light-bg);
-    color: var(--text-dark);
-}
-
-.updatemenu-container h1 {
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: var(--primary-accent);
 }
 
-.add-item-form {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: var(--light-bg);
+.card {
+    background: var(--surface-dark);
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.dark-theme .add-item-form {
-    background-color: #3d3d3d;
+/* Form Styles */
+.grid-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
 }
 
-.add-item-form h2 {
-    margin-bottom: 15px;
-    font-size: 20px;
-    color: var(--primary-accent);
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: inherit;
-}
-
-.form-group input,
-.form-group select {
+.modern-input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: var(--border-radius);
-    background-color: var(--light-bg);
-    color: var(--text-dark);
-    font-size: 16px;
-}
-
-.dark-theme .form-group input,
-.dark-theme .form-group select {
-    background-color: #3d3d3d;
-    border-color: #444;
+    padding: 0.8rem;
+    background: var(--card-dark);
+    border: 2px solid var(--background-dark);
+    border-radius: 8px;
     color: var(--text-light);
+    transition: all var(--transition-speed);
 }
 
-.form-group input:focus,
-.form-group select:focus {
-    border-color: var(--primary-accent);
+.modern-input:focus {
+    border-color: var(--primary-color);
     outline: none;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
-.submit-btn {
+.select-wrapper {
+    position: relative;
+}
+
+.modern-select {
+    appearance: none;
     width: 100%;
-    padding: 10px;
-    background-color: var(--primary-accent);
+    padding: 0.8rem;
+    background: var(--card-dark);
+    border: 2px solid var(--background-dark);
+    border-radius: 8px;
     color: var(--text-light);
-    border: none;
-    border-radius: var(--border-radius);
-    font-size: 16px;
-    cursor: pointer;
-    transition: var(--transition);
 }
 
-.submit-btn:hover {
-    background-color: #357abd;
+.price-input {
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
-#menu-table {
+.price-input .currency {
+    position: absolute;
+    left: 10px;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.price-input input {
+    padding-left: 30px;
+}
+
+/* Table Styles */
+.table-container {
+    overflow-x: auto;
+}
+
+.modern-table {
     width: 100%;
     border-collapse: collapse;
-    background-color: var(--light-bg);
+    background: var(--card-dark);
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: var(--shadow);
 }
 
-.dark-theme #menu-table {
-    background-color: #3d3d3d;
-    color: var(--text-light);
-}
-
-#menu-table th, #menu-table td {
-    padding: 12px;
+.modern-table th {
+    background: var(--primary-color);
+    padding: 1rem;
     text-align: left;
-    border-bottom: 1px solid #ccc;
+    font-weight: 600;
 }
 
-.dark-theme #menu-table th,
-.dark-theme #menu-table td {
-    border-bottom: 1px solid #444;
-}
-
-#menu-table th {
-    background-color: var(--primary-accent);
-    color: var(--text-light);
-}
-
-#menu-table tbody tr:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-.dark-theme #menu-table tbody tr:hover {
-    background-color: #4d4d4d;
+.modern-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--background-dark);
 }
 
 .editable-input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: var(--border-radius);
-    background-color: var(--light-bg);
-    color: var(--text-dark);
-    font-size: 16px;
+    background: transparent;
+    border: 2px solid transparent;
+    padding: 0.5rem;
+    color: var(--text-light);
+    transition: all var(--transition-speed);
 }
 
-.dark-theme .editable-input {
-    background-color: #3d3d3d;
-    border-color: #444;
-    color: var(--text-light);
+.editable-input:focus {
+    background: var(--surface-dark);
+    border-color: var(--primary-color);
+}
+
+.category-pill {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.category-pill.Food {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--secondary-color);
+}
+
+.category-pill.Beverage {
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--primary-color);
+}
+button{
+    width: fit-content;
+}
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
 }
 
 .action-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--primary-accent);
-    padding: 5px;
-    margin: 0 2px;
-    transition: var(--transition);
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
 }
 
 .action-btn:hover {
-    color: var(--secondary-accent);
+    transform: translateY(-1px);
+}
+
+.save-btn {
+    color: var(--secondary-color);
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.save-btn:hover {
+    background: rgba(16, 185, 129, 0.2);
+}
+
+.delete-btn {
+    color: var(--accent-color);
+    background: rgba(244, 63, 94, 0.1);
 }
 
 .delete-btn:hover {
-    color: #ff6b6b;
+    background: rgba(244, 63, 94, 0.2);
+}
+
+.primary-action {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+.primary-action:hover {
+    transform: translateY(-2px);
+    background: var(--primary-color);
 }
